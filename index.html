@@ -3,35 +3,36 @@
 	<meta charset="utf-8" />
 	<title>Ping-PongGame</title>
     <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
-	<h1>PingPong! 🏓</h1>
-	<section id="seleccionar-mascota">
-        <h2>Selecciona tu mascota</h2>
-        <div>
+    <section id="seleccionar-mascota">
+        <h1 class="titulo">Robots de Combate</h1>
+
+        <h2 class="subtitulo">Selecciona tu Robot</h2>
+        <div class="tarjetas-mokepon">
             <input type="radio" name="mascota" id="hipodoge" />
-            <label for="hipodoge">Hipodoge 🐶</label>
-        </div>
-        <div>
+            <label class="tarjeta-de-mokepon" for="hipodoge">Robot Alpha</label>
+
             <input type="radio" name="mascota" id="capipepo" />
-            <label for="capipepo">Capipepo 🐱</label>
-        </div>
-        <div>
+            <label class="tarjeta-de-mokepon" for="capipepo">Robot Beta</label>
+
             <input type="radio" name="mascota" id="ratigueya" />
-            <label for="ratigueya">Ratigueya 🦜</label>
+            <label class="tarjeta-de-mokepon" for="ratigueya">Robot Gamma</label>
         </div>
         <button id="btn-mascota">Seleccionar</button>
     </section>
     <section id="seleccionar-ataque">
+        <h1 class="titulo">Robots de Combate</h1>
         <h2>Selecciona tu ataque:</h2>
 
-        <p> Tu mascota <span id="mascota-jugador"></span> <span id="vidas-jugador">3</span> vidas</p>
-        <p> La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+        <p> Tu Robot <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
+        <p> El Robot <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
 
         <p>
-            <button id="btn-fuego">Fuego🔥</button>
-            <button id="btn-agua">Agua💧</button>
-            <button id="btn-tierra">Tierra🌍</button>
+            <button id="btn-fuego">Láser🔥</button>
+            <button id="btn-agua">Misiles💧</button>
+            <button id="btn-tierra">Escudo de Energia🌍</button>
         </p>
     </section>
 
@@ -43,3 +44,17 @@
     </section>
 </body>
 </html>
+
+<!--
+Robots de combate
+Mascotas: Tres modelos de robots distintos (Robot Alpha, Robot Beta, Robot Gamma)
+
+Ataques:
+
+Láser (vence a Misiles)
+
+Misiles (vencen a Escudo de energía)
+
+Escudo de energía (vence a Láser)
+ -->
+

@@ -84,6 +84,7 @@ function ataqueAleatorioEnemigo() {
     combate();
 }
 
+
 function combate() {
     let spanVidasJugador = document.getElementById("vidas-jugador");
     let spanVidasEnemigo = document.getElementById("vidas-enemigo");

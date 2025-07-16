@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #FAF0CA;
+    font-family: "Fredoka", sans-serif, monospace, Arial, sans-serif;
+
+}
+
+.titulo{
+    color: #d90429;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitulo {
+    color: #0D3B66;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+.tarjetas-mokepon {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tarjeta-de-mokepon {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: #0D3B66;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+}
+
+input{
+    display: none;
+}
+
+#btn-mascota {
+    background-color: #F95738;
+    border: 2px solid #c75640;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-mascota:hover {
+    background-color: #d90429;
+    border: #e72f4e;
+}
