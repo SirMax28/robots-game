@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@300;400&display=swap');
 
 *{
     box-sizing: border-box;
@@ -6,14 +6,17 @@
 
 body{
     background-color: #FAF0CA;
-    font-family: "Fredoka", sans-serif, monospace, Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 
 }
 
 .titulo{
+    font-family: "Fredoka", sans-serif;
     color: #d90429;
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2.7em;
 }
 
 #seleccionar-mascota {
@@ -26,40 +29,94 @@ body{
     color: #0D3B66;
     text-align: center;
     margin-bottom: 20px;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 .tarjetas-mokepon {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
 }
 
 .tarjeta-de-mokepon {
-    display: block;
-    width: 100px;
-    height: 100px;
+    display: flex;
+    width: 250px;
+    height: 140px;
     background-color: #0D3B66;
     padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    color: white;
+    border-radius: 10px;
     box-sizing: border-box;
+    overflow: hidden;
+    gap: 5px;
+    justify-content: flex-end;
+    transition: all 0.3s ease-in-out;
+    scale: 1;
 }
+.tarjeta-de-mokepon:hover{
+    box-shadow: #F95738 0px 0px 8px 2px;
+    transform: scale(1.05);
+    
+}
+
+.tarjetas-mokepon input:checked + .tarjeta-de-mokepon{
+    transform: scale(1.05);
+    /*box-shadow: #F95738 0px 0px 8px 2px;*/
+    border: 2px solid #F95738;
+}
+
+.tarjeta-de-mokepon img {
+    display: flex;
+    width: auto;
+    height: auto;
+}
+
+.tarjetas-mokepon label:nth-of-type(1) img {
+    translate: 45px 0;
+}
+
+.tarjetas-mokepon label:nth-of-type(2) img {
+    translate: 45px 0;
+}
+
+.tarjetas-mokepon label:nth-of-type(3) img {
+    translate: 56px 0;
+}
+
+.tarjeta-de-mokepon p{
+    color: white;
+    font-size: 1.45em;
+    align-self: flex-start;
+    padding-left: 20px;
+
+}
+
 
 input{
     display: none;
 }
 
 #btn-mascota {
+    width: 150px;
+    height: 40px;
     background-color: #F95738;
     border: 2px solid #c75640;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    margin-top: 20px;
 }
 
 #btn-mascota:hover {
     background-color: #d90429;
     border: #e72f4e;
+}
+
+@media (max-width: 800px) {
+    .tarjetas-mokepon {
+        flex-direction: column;
+        align-items: center;
+    }
 }

@@ -1,6 +1,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Ping-PongGame</title>
     <script src="./js/main.js"></script>
     <link rel="stylesheet" href="./css/styles.css" />
@@ -9,16 +10,25 @@
     <section id="seleccionar-mascota">
         <h1 class="titulo">Robots de Combate</h1>
 
-        <h2 class="subtitulo">Selecciona tu Robot</h2>
+        <h2 class="subtitulo">Selecciona tu Robot:</h2>
         <div class="tarjetas-mokepon">
             <input type="radio" name="mascota" id="hipodoge" />
-            <label class="tarjeta-de-mokepon" for="hipodoge">Robot Alpha</label>
+            <label class="tarjeta-de-mokepon" for="hipodoge">
+                <p>Robot Alpha</p>
+                <img src="assets/robot_alpha.png" alt="">
+            </label>
 
             <input type="radio" name="mascota" id="capipepo" />
-            <label class="tarjeta-de-mokepon" for="capipepo">Robot Beta</label>
+            <label class="tarjeta-de-mokepon" for="capipepo">
+                <p>Robot Beta</p>
+                <img src="assets/robot_beta.png" alt="">
+            </label>
 
             <input type="radio" name="mascota" id="ratigueya" />
-            <label class="tarjeta-de-mokepon" for="ratigueya">Robot Gamma</label>
+            <label class="tarjeta-de-mokepon" for="ratigueya">
+                <p>Robot Gamma</p>
+                <img src="assets/robot_gamma.png" alt="">
+            </label>
         </div>
         <button id="btn-mascota">Seleccionar</button>
     </section>
