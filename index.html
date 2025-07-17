@@ -42,7 +42,7 @@
             <button id="btn-tierra" class="btn-ataque">Escudo 🌍</button>
         </div>
 
-        <div>
+        <div id="estatus-juego">
             <section id="mensajes">
                 <p id="resultado"></p>
             </section>      
@@ -52,11 +52,17 @@
             </section>
         </div>
 
-        <div>
-            <div id="ataque-de-jugador"></div>
-            <div id="ataque-de-enemigo"></div>   
-            <p> Tu Robot <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
-            <p> El Robot <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+        <div class="log-ataques">
+            <div>
+                <p id="vidas-jugador">3</p>
+                <p id="mascota-jugador"></p>
+                <div id="ataque-de-jugador"></div>
+            </div>
+            <div>
+                <p id="vidas-enemigo">3</p>
+                <p id="mascota-enemigo"></p>
+                <div id="ataque-de-enemigo"></div>   
+            </div>
         </div>
     </section>
 

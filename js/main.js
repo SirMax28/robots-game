@@ -114,12 +114,12 @@ function combate() {
 function revisarVidas() {
     let sectionMensajes = document.getElementById("resultado");
     if (vidasEnemigo === 0) {
-        sectionMensajes.innerHTML = "¡Felicidades! Has ganado el juego 🎉";
+        sectionMensajes.innerHTML = "Ganaste 🎉";
         document.getElementById("btn-fuego").disabled = true;
         document.getElementById("btn-agua").disabled = true;
         document.getElementById("btn-tierra").disabled = true;
     }else if (vidasJugador === 0) {
-        sectionMensajes.innerHTML = "Lo siento, has perdido el juego 😢";
+        sectionMensajes.innerHTML = "Perdiste 😢";
         document.getElementById("btn-fuego").disabled = true;
         document.getElementById("btn-agua").disabled = true;
         document.getElementById("btn-tierra").disabled = true;

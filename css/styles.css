@@ -144,6 +144,24 @@ input{
     transform: scale(1.03);
 }
 
+.btn-ataque:disabled {
+    background-color: #7a776b;
+    cursor: not-allowed;
+    transition: none;
+    box-shadow: none;
+    border: none;
+    transform: none;   
+}
+
+#estatus-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 350px;
+}
+
 #btn-reiniciar {
     width: 90px;
     height: 30px;
@@ -153,7 +171,7 @@ input{
     border-radius: 10px;
     cursor: pointer;
     font-family: "Poppins", sans-serif;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 #btn-reiniciar:hover {
     background-color: #9e061f;
@@ -162,6 +180,8 @@ input{
 }
 
 #mensajes {
+    display: flex;
+    justify-content: center;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -169,14 +189,38 @@ input{
     font-size: 1.5em;
     color: #0D3B66;
     background-color: #f4d35e;
-    width: 300px;
-    height: 100px;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding:8px;
+    width: 100%;
+    max-width: 350px;
+    height: 110px;
+    margin-top: 30px;
+    border-radius: 10px
+}
+
+#mensajes p {
+    display: flex;
+    align-items: center;
 }
 .tarjetas-mokepon input:checked + #mensajes {
-    display: block;
+    display: flex;
+}
+
+.log-ataques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #f4d35e;
+    padding: 10px;
+    width: 100%;
+    max-width: 350px;
+
+}
+.log-ataques > div {
+  text-align: center;
+  color: #0D3B66;
+  font-size: 1.2em;
+  font-style: bold;
 }
 
 
