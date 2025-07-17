@@ -1,33 +1,32 @@
-let sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
-let sectionReiniciar = document.getElementById("reiniciar");
-let botonMascota = document.getElementById("btn-mascota");
-let botonFuego = document.getElementById("btn-fuego");
-let botonAgua = document.getElementById("btn-agua");
-let botonTierra = document.getElementById("btn-tierra");
-let botonReiniciar = document.getElementById("btn-reiniciar");
+const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+const sectionReiniciar = document.getElementById("reiniciar");
+const botonMascota = document.getElementById("btn-mascota");
+const botonFuego = document.getElementById("btn-fuego");
+const botonAgua = document.getElementById("btn-agua");
+const botonTierra = document.getElementById("btn-tierra");
+const botonReiniciar = document.getElementById("btn-reiniciar");
+
+const SectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+const inputHipodoge = document.getElementById("hipodoge");
+const inputCapipepo = document.getElementById("capipepo");
+const inputRatigueya = document.getElementById("ratigueya");
+const spanMascotaJugador = document.getElementById("mascota-jugador");
+
+const spanMascotaEnemigo = document.getElementById("mascota-enemigo");
+
+const spanVidasJugador = document.getElementById("vidas-jugador");
+const spanVidasEnemigo = document.getElementById("vidas-enemigo");
+
+const sectionMensajes = document.getElementById("resultado");
+
+/*let sectionMensajes = document.getElementById("resultado");*/
+const ataqueDeJugador = document.getElementById("ataque-de-jugador");
+const ataqueDeEnemigo = document.getElementById("ataque-de-enemigo");
 
 let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
-
-let SectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-let inputHipodoge = document.getElementById("hipodoge");
-let inputCapipepo = document.getElementById("capipepo");
-let inputRatigueya = document.getElementById("ratigueya");
-let spanMascotaJugador = document.getElementById("mascota-jugador");
-
-let spanMascotaEnemigo = document.getElementById("mascota-enemigo");
-
-let spanVidasJugador = document.getElementById("vidas-jugador");
-let spanVidasEnemigo = document.getElementById("vidas-enemigo");
-
-let sectionMensajes = document.getElementById("resultado");
-
-/*let sectionMensajes = document.getElementById("resultado");*/
-let ataqueDeJugador = document.getElementById("ataque-de-jugador");
-let ataqueDeEnemigo = document.getElementById("ataque-de-enemigo");
-
 
 
 
