@@ -6,10 +6,8 @@ const botonAgua = document.getElementById("btn-agua");
 const botonTierra = document.getElementById("btn-tierra");
 const botonReiniciar = document.getElementById("btn-reiniciar");
 
-const SectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-const inputHipodoge = document.getElementById("hipodoge");
-const inputCapipepo = document.getElementById("capipepo");
-const inputRatigueya = document.getElementById("ratigueya");
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+
 const spanMascotaJugador = document.getElementById("mascota-jugador");
 
 const spanMascotaEnemigo = document.getElementById("mascota-enemigo");
@@ -29,6 +27,9 @@ let mokepones = [];
 let ataqueJugador;
 let ataqueEnemigo;
 let opcionDeMokepones;
+let inputHipodoge;
+let inputCapipepo;
+let inputRatigueya;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
@@ -82,6 +83,10 @@ function iniciarJuego() {
             </label>
         `;
         contenedorTarjetas.innerHTML += opcionDeMokepones;
+
+        inputHipodoge = document.getElementById("Hipodoge");
+        inputCapipepo = document.getElementById("Capipepo");
+        inputRatigueya = document.getElementById("Ratigueya");
     })
 
     botonMascota.addEventListener("click", seleccionarMascotaJugador);
@@ -93,29 +98,24 @@ function iniciarJuego() {
 
 function seleccionarMascotaJugador() {
     sectionSeleccionarAtaque.style.display = "flex";
-    SectionSeleccionarMascota.style.display='none';
+    sectionSeleccionarMascota.style.display='none';
     sectionReiniciar.style.display = "block";
+
     if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = "Hipodoge";
+        spanMascotaJugador.innerHTML = inputHipodoge.id;
     } else if (inputCapipepo.checked) {
-        spanMascotaJugador.innerHTML = "Capipepo";
+        spanMascotaJugador.innerHTML = inputCapipepo.id;
     } else if (inputRatigueya.checked) {
-        spanMascotaJugador.innerHTML = "Ratigueya";
+        spanMascotaJugador.innerHTML = inputRatigueya.id;
     } else {
         alert("Selecciona una mascota");
     }
     seleccionarMascotaEnemigo();
 }
 function seleccionarMascotaEnemigo() {
-        let mascotaAleatoria = aleatorio(1, 3);
-        if(mascotaAleatoria == 1) {
-            spanMascotaEnemigo.innerHTML = "Hipodoge";
-        } else if(mascotaAleatoria == 2) {
-            spanMascotaEnemigo.innerHTML = "Capipepo";
-        } else {
-            spanMascotaEnemigo.innerHTML = "Ratigueya";
-        }
-    }
+        let mascotaAleatoria = aleatorio(0, mokepones.length - 1);
+        spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre;
+}
 function ataqueFuego() {
     ataqueJugador = "Fuego🔥";
     ataqueAleatorioEnemigo();
