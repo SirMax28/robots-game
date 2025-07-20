@@ -231,10 +231,48 @@ input{
     margin-top: 20px;
 }
 #mapa {
-    border: 2px solid #0D3B66;
     border-radius: 10px;
     background-color: #0D3B66;
 } 
+
+.mover-bottones {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: .25rem;
+    margin-top: 20px;
+}
+
+#up{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+#left{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+#down{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+#right{
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+#up, #left, #down, #right {
+    width: 80px;
+    height: 40px;
+    background-color: #F95738;
+    border: 2px solid #c75640;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+}
+
+#up:hover, #left:hover, #down:hover, #right:hover {
+    background-color: #d90429;
+    border: #e72f4e;
+}
 
 
 
@@ -246,5 +284,14 @@ input{
     .ataques {
         flex-direction: column;
         gap: 15px;
+    }
+}
+
+@media (max-width: 300px) {
+    #ver-mapa {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
