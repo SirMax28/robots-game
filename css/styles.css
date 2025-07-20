@@ -223,6 +223,20 @@ input{
   font-style: bold;
 }
 
+/* Parte del Canvas */
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#mapa {
+    border: 2px solid #0D3B66;
+    border-radius: 10px;
+    background-color: #0D3B66;
+} 
+
+
 
 @media (max-width: 800px) {
     .tarjetas-mokepon {
