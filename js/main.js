@@ -27,6 +27,7 @@ const mapa = document.getElementById("mapa");
 mapa.width  = mapa.clientWidth;
 mapa.height = mapa.clientHeight;
 
+let jugadorId = null;
 let mokepones = [];
 let ataqueJugador = [];
 let ataqueEnemigo = [];
@@ -56,6 +57,7 @@ mapaBackground.src = "./assets/robotsMap.png";
 let alturaBuscada;
 let anchoDelMapa = window.innerWidth -20 -20;
 const anchoMaximoDelMapa = 600;
+
 
 // Ajustar el ancho del mapa al ancho máximo permitido
 if (anchoDelMapa > anchoMaximoDelMapa) {
@@ -169,8 +171,24 @@ function iniciarJuego() {
 
     botonMascota.addEventListener("click", seleccionarMascotaJugador);
     botonReiniciar.addEventListener("click", reiniciarJuego);
-}
 
+    unirseAlJuego();
+}
+function unirseAlJuego() {
+    fetch("http://localhost:3000/unirse")
+        .then(function (res) {
+            console.log(res);
+            if (res.ok) {
+                return res.text()
+                .then(function (respuesta) {
+                    console.log(respuesta);
+                    jugadorId = respuesta;
+                });
+            } else {
+                throw new Error("Error al unirse al juego");
+            }
+        });
+}
 function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display='none';
     
@@ -189,9 +207,21 @@ function seleccionarMascotaJugador() {
         alert("Selecciona una mascota");
         return;
     }
-    
+
+    seleccionarRobot(mascotaJugador); 
     extraerAtaques();
     iniciarMapa();
+}
+function seleccionarRobot(mascotaJugador) {
+    fetch(`http://localhost:3000/robot/${jugadorId}`,
+         { method: 'POST',
+           headers: {
+               'Content-Type': 'application/json'
+           },
+           body: JSON.stringify({
+            'robot': mascotaJugador
+         })
+         })
 }
 function seleccionarMascotaEnemigo(enemigo) {
     spanMascotaEnemigo.innerHTML = enemigo.nombre;
@@ -356,6 +386,9 @@ function pintarCanvas(){
     );
     // Dibuja el personaje
     mascotaJugadorObjeto.pintarRobot();
+
+    //Enviar posicion del robot al servidor
+    enviarposicion(mascotaJugadorObjeto.x, mascotaJugadorObjeto.y);
     // Dibuja los enemigos
     hipodogeEnemigo.pintarRobot();
     capipepoEnemigo.pintarRobot();
@@ -368,6 +401,26 @@ function pintarCanvas(){
         revisarColicion(ratigueyaEnemigo);
     }
     
+}
+
+function enviarposicion(x, y) {
+    fetch(`http://localhost:3000/robot/${jugadorId}/posicion`,
+            { method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                x,
+                y
+            })
+            })
+            .then(function(res) {
+                if (res.ok) {
+                    res.json().then(function({ enemigos }) {
+                        console.log(enemigos);
+                    });
+                }
+            })
 }
 
 function moverDerecha() {
@@ -438,7 +491,6 @@ function revisarColicion(enemigo) {
 
 function iniciarMapa() {
     //600/400
-
     mascotaJugadorObjeto = extraerMascota();
     sectionVerMapa.style.display = "flex";
     intervalo = setInterval(pintarCanvas, 50);
