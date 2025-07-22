@@ -1,5 +1,5 @@
 // Configuración dinámica de la URL del servidor
-const BASE_URL = 'https://ping-pong-robots-backend.up.railway.app';
+const BASE_URL = 'https://robots-game-production.up.railway.app';
 
 const sectionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
 const sectionReiniciar = document.getElementById("reiniciar");
