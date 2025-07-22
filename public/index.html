@@ -19,10 +19,10 @@
         <h2 class="subtitulo">Recorre el Mapa con tu Robot</h2>
         <canvas id="mapa"></canvas>
         <div class="mover-bottones">
-            <button id="up" onmouseup="detenerMovimiento()" onmousedown="moverArriba()">Arriba</button>
-            <button id="left" onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">Izquierda</button>
-            <button id="down" onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">Abajo</button>
-            <button id="right" onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">Derecha</button>
+            <button id="up" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverArriba()" onmousedown="moverArriba()">Arriba</button>
+            <button id="left" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverIzquierda()" onmousedown="moverIzquierda()">Izquierda</button>
+            <button id="down" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverAbajo()" onmousedown="moverAbajo()">Abajo</button>
+            <button id="right" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverDerecha()" onmousedown="moverDerecha()">Derecha</button>
         </div>
     </section>
 

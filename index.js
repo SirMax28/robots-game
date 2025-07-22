@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-
 const app = express();
+
+app.use(express.static('public'));
 app.use(cors());
 app.use(express.json());
 
@@ -18,6 +19,9 @@ class Jugador {
   actualizarPosicion(x, y) {
       this.robot.x = x;
       this.robot.y = y;
+  }
+  asignarAtaques(ataques) {
+    this.robot.ataques = ataques;
   }
 }
 
@@ -66,6 +70,26 @@ app.post('/robot/:jugadorId/posicion', (req, res) => {
   res.send({ enemigos });
 })
 
-app.listen(3000, () => {
+app.post('/robot/:jugadorId/ataques', (req, res) => {
+  const jugadorId = req.params.jugadorId || '';
+  const ataques = req.body.ataques || [];
+  const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id);
+  if (jugadorIndex >= 0) {
+    jugadores[jugadorIndex].asignarAtaques(ataques);
+  } else {
+    console.error(`Jugador con ID ${jugadorId} no encontrado.`);
+  }
+  res.end();
+});
+
+app.get('/robot/:jugadorId/ataques', (req, res) =>{
+  const jugadorId = req.params.jugadorId || '';
+  const jugador = jugadores.find((jugador) => jugador.id === jugadorId);
+  res.send(
+    { ataques: jugador.robot.ataques || [] 
+    });
+});
+app.listen(3000, '0.0.0.0', () => {
   console.log('Server is running on port 3000');
+  console.log('Access from local network: http://[YOUR_IP]:3000');
 });
