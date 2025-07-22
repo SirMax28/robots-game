@@ -32,22 +32,23 @@ mapa.height = mapa.clientHeight;
 
 let jugadorId = null;
 let enemigoId = null;
-let mokepones = [];
+let robots = [];
 let robotsEnemigos = [];
 let ataqueJugador = [];
 let ataqueEnemigo = [];
-let opcionDeMokepones;
+let opcionDeRobots;
+let ataquesRobot;
 let botonDeAtaque;
-let inputHipodoge;
-let inputCapipepo;
-let inputRatigueya;
+let inputRobotAlpha;
+let inputRobotBeta;
+let inputRobotGamma;
 let mascotaJugador;
 let mascotaJugadorObjeto;
 let ataquesJugador;
-let ataquesMokeponEnemigo;
-let botonFuego ;
-let botonAgua;
-let botonTierra;
+let ataquesRobotEnemigo;
+let botonLaser ;
+let botonMisiles;
+let botonEscudo;
 let botones = [];
 let indexJugador;
 let indexEnemigo;
@@ -72,7 +73,7 @@ alturaBuscada = (anchoDelMapa * 400) / 600;
 mapa.width = anchoDelMapa;
 mapa.height = alturaBuscada;
 
-class Mokepon {
+class Robot {
     constructor(nombre, foto,foto_dark,vida,fotoMapa, id = null) {
         this.id = id;
         this.nombre = nombre;
@@ -100,44 +101,44 @@ class Mokepon {
     }
 }
 
-let hipodoge = new Mokepon("Hipodoge", "./assets/robot_alpha.png","./assets/blue_robot_alpha.png", 5, "./assets/cabeza_alpha.png");
-let capipepo = new Mokepon("Capipepo", "./assets/robot_beta.png","./assets/blue_robot_beta.png", 5, "./assets/cabeza_beta.png");
-let ratigueya = new Mokepon("Ratigueya", "./assets/robot_gamma.png","./assets/blue_robot_gamma.png", 5, "./assets/cabeza_gamma.png");
-//mokepones.push(hipodoge, capipepo, ratigueya);
+let robotAlpha = new Robot("Robot Alpha", "./assets/robot_alpha.png","./assets/blue_robot_alpha.png", 5, "./assets/cabeza_alpha.png");
+let robotBeta = new Robot("Robot Beta", "./assets/robot_beta.png","./assets/blue_robot_beta.png", 5, "./assets/cabeza_beta.png");
+let robotGamma = new Robot("Robot Gamma", "./assets/robot_gamma.png","./assets/blue_robot_gamma.png", 5, "./assets/cabeza_gamma.png");
+//robots.push(robotAlpha, robotBeta, robotGamma);
 
 
-const HIPODOGE_ATAQUES = [
-    { nombre: "💧", id: "btn-agua" },
-    { nombre: "💧", id: "btn-agua" },
-    { nombre: "💧", id: "btn-agua" },
-    { nombre: "🔥", id: "btn-fuego"},
-    { nombre: "🌱", id: "btn-tierra" }
+const ROBOT_ALPHA_ATAQUES = [
+    { nombre: "🚀", id: "btn-misiles" },
+    { nombre: "🚀", id: "btn-misiles" },
+    { nombre: "🚀", id: "btn-misiles" },
+    { nombre: "⚡", id: "btn-laser"},
+    { nombre: "🛡️", id: "btn-escudo" }
 ];
-const CAPIPEPO_ATAQUES = [
-    { nombre: "🌱", id: "btn-tierra" },
-    { nombre: "🌱", id: "btn-tierra" },
-    { nombre: "🌱", id: "btn-tierra" },
-    { nombre: "💧", id: "btn-agua" },
-    { nombre: "🔥", id: "btn-fuego"}
+const ROBOT_BETA_ATAQUES = [
+    { nombre: "🛡️", id: "btn-escudo" },
+    { nombre: "🛡️", id: "btn-escudo" },
+    { nombre: "🛡️", id: "btn-escudo" },
+    { nombre: "🚀", id: "btn-misiles" },
+    { nombre: "⚡", id: "btn-laser"}
 ];
-const RATIGUEYA_ATAQUES = [
-    { nombre: "🔥", id: "btn-fuego" },
-    { nombre: "🔥", id: "btn-fuego" },
-    { nombre: "🔥", id: "btn-fuego" },
-    { nombre: "💧", id: "btn-agua" },
-    { nombre: "🌱", id: "btn-tierra" }
+const ROBOT_GAMMA_ATAQUES = [
+    { nombre: "⚡", id: "btn-laser" },
+    { nombre: "⚡", id: "btn-laser" },
+    { nombre: "⚡", id: "btn-laser" },
+    { nombre: "🚀", id: "btn-misiles" },
+    { nombre: "🛡️", id: "btn-escudo" }
 ];
 
-hipodoge.ataques.push(...HIPODOGE_ATAQUES)
+robotAlpha.ataques.push(...ROBOT_ALPHA_ATAQUES)
 
-capipepo.ataques.push(...CAPIPEPO_ATAQUES)
+robotBeta.ataques.push(...ROBOT_BETA_ATAQUES)
 
-ratigueya.ataques.push(...RATIGUEYA_ATAQUES)
-
-
+robotGamma.ataques.push(...ROBOT_GAMMA_ATAQUES)
 
 
-mokepones.push(hipodoge, capipepo, ratigueya);
+
+
+robots.push(robotAlpha, robotBeta, robotGamma);
 
 function iniciarJuego() {
     sectionSeleccionarAtaque.style.display = "none";
@@ -145,19 +146,19 @@ function iniciarJuego() {
 
     sectionVerMapa.style.display = "none";
 
-    mokepones.forEach((mokepon) => {
-        opcionDeMokepones = `
-            <input type="radio" name="mascota" id="${mokepon.nombre}" />
-            <label class="tarjeta-de-mokepon" for="${mokepon.nombre}">
-                <p>${mokepon.nombre}</p>
-                <img src="${mokepon.foto}" alt="${mokepon.nombre}">
+    robots.forEach((robot) => {
+        opcionDeRobots = `
+            <input type="radio" name="mascota" id="${robot.nombre}" />
+            <label class="tarjeta-de-robot" for="${robot.nombre}">
+                <p>${robot.nombre}</p>
+                <img src="${robot.foto}" alt="${robot.nombre}">
             </label>
         `;
-        contenedorTarjetas.innerHTML += opcionDeMokepones;
+        contenedorTarjetas.innerHTML += opcionDeRobots;
 
-        inputHipodoge = document.getElementById("Hipodoge");
-        inputCapipepo = document.getElementById("Capipepo");
-        inputRatigueya = document.getElementById("Ratigueya");
+        inputRobotAlpha = document.getElementById("Robot Alpha");
+        inputRobotBeta = document.getElementById("Robot Beta");
+        inputRobotGamma = document.getElementById("Robot Gamma");
     })
 
     botonMascota.addEventListener("click", seleccionarMascotaJugador);
@@ -182,17 +183,17 @@ function unirseAlJuego() {
 }
 function seleccionarMascotaJugador() {
     
-    if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = inputHipodoge.id;
-        mascotaJugador = inputHipodoge.id;
-    } else if (inputCapipepo.checked) {
-        spanMascotaJugador.innerHTML = inputCapipepo.id;
-        mascotaJugador = inputCapipepo.id;
-    } else if (inputRatigueya.checked) {
-        spanMascotaJugador.innerHTML = inputRatigueya.id;
-        mascotaJugador = inputRatigueya.id;
+    if (inputRobotAlpha.checked) {
+        spanMascotaJugador.innerHTML = inputRobotAlpha.id;
+        mascotaJugador = inputRobotAlpha.id;
+    } else if (inputRobotBeta.checked) {
+        spanMascotaJugador.innerHTML = inputRobotBeta.id;
+        mascotaJugador = inputRobotBeta.id;
+    } else if (inputRobotGamma.checked) {
+        spanMascotaJugador.innerHTML = inputRobotGamma.id;
+        mascotaJugador = inputRobotGamma.id;
     } else {
-        alert("Selecciona una mascota");
+        alert("Selecciona un robot");
         return;
     }
     sectionSeleccionarMascota.style.display='none';
@@ -214,14 +215,14 @@ function seleccionarRobot(mascotaJugador) {
 }
 function seleccionarMascotaEnemigo(enemigo) {
     spanMascotaEnemigo.innerHTML = enemigo.nombre;
-    ataquesMokeponEnemigo = enemigo.ataques;
+    ataquesRobotEnemigo = enemigo.ataques;
     secuenciaAtaque();
 }
 function extraerAtaques() {
     let ataques;
-    for (let i = 0; i < mokepones.length; i++) {
-        if (mokepones[i].nombre === mascotaJugador) {
-            ataques = mokepones[i].ataques;
+    for (let i = 0; i < robots.length; i++) {
+        if (robots[i].nombre === mascotaJugador) {
+            ataques = robots[i].ataques;
         }
     }
     mostrarAtaques(ataques);
@@ -230,27 +231,27 @@ function extraerAtaques() {
 
 function mostrarAtaques(ataques){
     ataques.forEach(ataque => {
-        ataquesMokepon = `
+        ataquesRobot = `
             <button id="${ataque.id}" class="btn-ataque BAtaque">${ataque.nombre}</button>
         `;
-        contenedorAtaques.innerHTML += ataquesMokepon;
+        contenedorAtaques.innerHTML += ataquesRobot;
     });
-    botonFuego = document.getElementById("btn-fuego");
-    botonAgua = document.getElementById("btn-agua");
-    botonTierra = document.getElementById("btn-tierra");
+    botonLaser = document.getElementById("btn-laser");
+    botonMisiles = document.getElementById("btn-misiles");
+    botonEscudo = document.getElementById("btn-escudo");
     botones = document.querySelectorAll(".BAtaque");
 
 }
 function secuenciaAtaque() {
     botones.forEach((boton) => {
         boton.addEventListener("click",(e) => {
-            if (e.target.textContent === "🔥") {
-                ataqueJugador.push("Fuego");
+            if (e.target.textContent === "⚡") {
+                ataqueJugador.push("Laser");
                 console.log(ataqueJugador);
-            } else if (e.target.textContent === "💧") {
-                ataqueJugador.push("Agua");
-            } else if (e.target.textContent === "🌱") {
-                ataqueJugador.push("Tierra");
+            } else if (e.target.textContent === "🚀") {
+                ataqueJugador.push("Misiles");
+            } else if (e.target.textContent === "🛡️") {
+                ataqueJugador.push("Escudo");
             } else {
                 console.error("Botón no reconocido");
             }
@@ -290,13 +291,13 @@ function obtenerAtaques() {
 }
 
 function ataqueAleatorioEnemigo() {
-    let ataqueAleatorio = aleatorio(0, ataquesMokeponEnemigo.length - 1);
+    let ataqueAleatorio = aleatorio(0, ataquesRobotEnemigo.length - 1);
     if (ataqueAleatorio == 0 || ataqueAleatorio == 1) {
-        ataqueEnemigo.push("Fuego");
+        ataqueEnemigo.push("Laser");
     } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4) {
-        ataqueEnemigo.push("Agua");
+        ataqueEnemigo.push("Misiles");
     } else {
-        ataqueEnemigo.push("Tierra");
+        ataqueEnemigo.push("Escudo");
     }
     console.log(ataqueEnemigo);
     iniciarPelea();
@@ -320,9 +321,9 @@ function combate() {
             indexAmbosOponentes(i, i);
             crearMensaje("🤝EMPATE🤝");
         } else if (
-            (ataqueJugador[i] === "Fuego" && ataqueEnemigo[i] === "Tierra") ||
-            (ataqueJugador[i] === "Agua" && ataqueEnemigo[i] === "Fuego") ||
-            (ataqueJugador[i] === "Tierra" && ataqueEnemigo[i] === "Agua")
+            (ataqueJugador[i] === "Laser" && ataqueEnemigo[i] === "Escudo") ||
+            (ataqueJugador[i] === "Misiles" && ataqueEnemigo[i] === "Laser") ||
+            (ataqueJugador[i] === "Escudo" && ataqueEnemigo[i] === "Misiles")
         ) {
             indexAmbosOponentes(i, i);
             crearMensaje("🎊GANASTE🎊");
@@ -346,10 +347,16 @@ function revisarVidas() {
     }else {
         sectionMensajes.innerHTML = "Perdiste 😢"; 
     }
+    
+    // Hacer visible la tarjeta de mensajes al final del juego
+    const divMensaje = document.getElementById("mensajes");
+    divMensaje.style.visibility = "visible";
+    divMensaje.style.opacity = "1";
+    
     /*
-    document.getElementById("btn-fuego").disabled = true;
-    document.getElementById("btn-agua").disabled = true;
-    document.getElementById("btn-tierra").disabled = true;
+    document.getElementById("btn-laser").disabled = true;
+    document.getElementById("btn-misiles").disabled = true;
+    document.getElementById("btn-escudo").disabled = true;
     */
 }
 
@@ -384,9 +391,9 @@ function aleatorio(min, max) {
     }
 //Canvas
 function extraerMascota() {
-    for (let i = 0; i < mokepones.length; i++) {
-        if (mokepones[i].nombre === mascotaJugador) {
-            return mokepones[i];
+    for (let i = 0; i < robots.length; i++) {
+        if (robots[i].nombre === mascotaJugador) {
+            return robots[i];
         }
     }
 };
@@ -433,13 +440,13 @@ function enviarposicion(x, y) {
                         robotsEnemigos = enemigos.map(function (enemigo) {
                             let robotEnemigo = null;
                            const robotNombre = enemigo.robot.nombre || '';
-                           if( robotNombre ==="Hipodoge" ) {
+                           if( robotNombre ==="Robot Alpha" ) {
                                 //Enemigos
-                                robotEnemigo = new Mokepon("Hipodoge", "./assets/robot_alpha.png","./assets/blue_robot_alpha.png", 5, "./assets/cabeza_alpha.png", enemigo.id);
-                           }else if (robotNombre ==="Capipepo") {
-                                robotEnemigo = new Mokepon("Capipepo", "./assets/robot_beta.png","./assets/blue_robot_beta.png", 5, "./assets/cabeza_beta.png", enemigo.id);
-                           }else if (robotNombre ==="Ratigueya") {
-                                robotEnemigo = new Mokepon("Ratigueya", "./assets/robot_gamma.png","./assets/blue_robot_gamma.png", 5, "./assets/cabeza_gamma.png", enemigo.id);
+                                robotEnemigo = new Robot("Robot Alpha", "./assets/robot_alpha.png","./assets/blue_robot_alpha.png", 5, "./assets/cabeza_alpha.png", enemigo.id);
+                           }else if (robotNombre ==="Robot Beta") {
+                                robotEnemigo = new Robot("Robot Beta", "./assets/robot_beta.png","./assets/blue_robot_beta.png", 5, "./assets/cabeza_beta.png", enemigo.id);
+                           }else if (robotNombre ==="Robot Gamma") {
+                                robotEnemigo = new Robot("Robot Gamma", "./assets/robot_gamma.png","./assets/blue_robot_gamma.png", 5, "./assets/cabeza_gamma.png", enemigo.id);
                            }
                            
                            robotEnemigo.x = enemigo.robot.x;

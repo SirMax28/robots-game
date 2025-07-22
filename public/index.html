@@ -1,75 +1,102 @@
 <html>
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Ping-PongGame</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ping-PongGame</title>
     <link rel="stylesheet" href="./css/styles.css" />
-</head>
-<body>
+  </head>
+  <body>
     <section id="seleccionar-mascota">
-        <h1 class="titulo">Robots de Combate</h1>
+      <h1 class="titulo">Robots de Combate</h1>
 
-        <h2 class="subtitulo">Selecciona tu Robot:</h2>
-        <div id="contenedor-tarjetas" class="tarjetas-mokepon">
-            
-        </div>
-        <button id="btn-mascota">Seleccionar</button>
+      <h2 class="subtitulo">Selecciona tu Robot:</h2>
+      <div id="contenedor-tarjetas" class="tarjetas-robots"></div>
+      <button id="btn-mascota">Seleccionar</button>
     </section>
-    <section id="ver-mapa"> 
-        <h2 class="subtitulo">Recorre el Mapa con tu Robot</h2>
-        <canvas id="mapa"></canvas>
-        <div class="mover-bottones">
-            <button id="up" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverArriba()" onmousedown="moverArriba()">Arriba</button>
-            <button id="left" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverIzquierda()" onmousedown="moverIzquierda()">Izquierda</button>
-            <button id="down" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverAbajo()" onmousedown="moverAbajo()">Abajo</button>
-            <button id="right" ontouchend="detenerMovimiento()" onmouseup="detenerMovimiento()" ontouchstart="moverDerecha()" onmousedown="moverDerecha()">Derecha</button>
-        </div>
+    <section id="ver-mapa">
+      <h2 class="subtitulo">Recorre el Mapa con tu Robot</h2>
+      <canvas id="mapa"></canvas>
+      <div class="mover-bottones">
+        <button
+          id="up"
+          ontouchend="detenerMovimiento()"
+          onmouseup="detenerMovimiento()"
+          ontouchstart="moverArriba()"
+          onmousedown="moverArriba()"
+        >
+          Arriba
+        </button>
+        <button
+          id="left"
+          ontouchend="detenerMovimiento()"
+          onmouseup="detenerMovimiento()"
+          ontouchstart="moverIzquierda()"
+          onmousedown="moverIzquierda()"
+        >
+          Izquierda
+        </button>
+        <button
+          id="down"
+          ontouchend="detenerMovimiento()"
+          onmouseup="detenerMovimiento()"
+          ontouchstart="moverAbajo()"
+          onmousedown="moverAbajo()"
+        >
+          Abajo
+        </button>
+        <button
+          id="right"
+          ontouchend="detenerMovimiento()"
+          onmouseup="detenerMovimiento()"
+          ontouchstart="moverDerecha()"
+          onmousedown="moverDerecha()"
+        >
+          Derecha
+        </button>
+      </div>
     </section>
 
     <section id="seleccionar-ataque">
-        <h1 class="titulo">Robots de Combate</h1>
-        <h2 class="subtitulo">Selecciona tu ataque:</h2>
-        <div id="contenedor-ataques" class="ataques">
-            
-        </div>
+      <h1 class="titulo">Robots de Combate</h1>
+      <h2 class="subtitulo">Selecciona tu ataque:</h2>
+      <div id="contenedor-ataques" class="ataques"></div>
 
-        <div id="estatus-juego">
-            <section id="mensajes">
-                <p id="resultado"></p>
-            </section>      
-            
-            <section id="reiniciar">
-                <button id="btn-reiniciar">Reiniciar</button>
-            </section>
-        </div>
+      <div id="estatus-juego">
+        <section id="mensajes">
+          <p id="resultado"></p>
+        </section>
 
-        <div class="log-ataques">
-            <div>
-                <p id="vidas-jugador">0</p>
-                <p id="mascota-jugador"></p>
-                <div id="ataque-de-jugador"></div>
-            </div>
-            <div>
-                <p id="vidas-enemigo">0</p>
-                <p id="mascota-enemigo"></p>
-                <div id="ataque-de-enemigo"></div>   
-            </div>
+        <section id="reiniciar">
+          <button id="btn-reiniciar">Reiniciar</button>
+        </section>
+      </div>
+
+      <div class="log-ataques">
+        <div>
+          <p id="vidas-jugador">0</p>
+          <p id="mascota-jugador"></p>
+          <div id="ataque-de-jugador"></div>
         </div>
+        <div>
+          <p id="vidas-enemigo">0</p>
+          <p id="mascota-enemigo"></p>
+          <div id="ataque-de-enemigo"></div>
+        </div>
+      </div>
     </section>
     <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>
 
 <!--
 Robots de combate
-Mascotas: Tres modelos de robots distintos (Robot Alpha, Robot Beta, Robot Gamma)
+Robots: Tres modelos de robots distintos (Robot Alpha, Robot Beta, Robot Gamma)
 
 Ataques:
 
-Láser (vence a Misiles)
+Láser (vence a Escudo)
 
-Misiles (vencen a Escudo de energía)
+Misiles (vencen a Láser)
 
-Escudo de energía (vence a Láser)
+Escudo (vence a Misiles)
  -->
-

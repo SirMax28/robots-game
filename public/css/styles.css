@@ -1,297 +1,296 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@300;400&display=swap");
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #FAF0CA;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-
+body {
+  background-color: #faf0ca;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
 }
 
-.titulo{
-    font-family: "Fredoka", sans-serif;
-    color: #d90429;
-    text-align: center;
-    font-size: 2.7em;
+.titulo {
+  font-family: "Fredoka", sans-serif;
+  color: #d90429;
+  text-align: center;
+  font-size: 2.7em;
 }
 
 #seleccionar-mascota {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .subtitulo {
-    color: #0D3B66;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.8em;
+  color: #0d3b66;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
 }
-.tarjetas-mokepon {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    width: 100%;
-    max-width: 800px;
-}
-
-.tarjeta-de-mokepon {
-    display: flex;
-    width: 250px;
-    height: 140px;
-    background-color: #0D3B66;
-    padding: 10px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    overflow: hidden;
-    gap: 5px;
-    justify-content: flex-end;
-    transition: all 0.3s ease-in-out;
-    scale: 1;
-}
-.tarjeta-de-mokepon:hover{
-    box-shadow: #F95738 0px 0px 8px 2px;
-    transform: scale(1.05);
-    
+.tarjetas-robots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
 }
 
-.tarjetas-mokepon input:checked + .tarjeta-de-mokepon{
-    transform: scale(1.05);
-    /*box-shadow: #F95738 0px 0px 8px 2px;*/
-    border: 2px solid #F95738;
+.tarjeta-de-robot {
+  display: flex;
+  width: 250px;
+  height: 140px;
+  background-color: #0d3b66;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  gap: 5px;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+  scale: 1;
+}
+.tarjeta-de-robot:hover {
+  box-shadow: #f95738 0px 0px 8px 2px;
+  transform: scale(1.05);
 }
 
-.tarjeta-de-mokepon img {
-    display: flex;
-    width: auto;
-    height: auto;
+.tarjetas-robots input:checked + .tarjeta-de-robot {
+  transform: scale(1.05);
+  /*box-shadow: #F95738 0px 0px 8px 2px;*/
+  border: 2px solid #f95738;
 }
 
-.tarjetas-mokepon label:nth-of-type(1) img {
-    translate: 45px 0;
+.tarjeta-de-robot img {
+  display: flex;
+  width: auto;
+  height: auto;
 }
 
-.tarjetas-mokepon label:nth-of-type(2) img {
-    translate: 45px 0;
+.tarjetas-robots label:nth-of-type(1) img {
+  translate: 45px 0;
 }
 
-.tarjetas-mokepon label:nth-of-type(3) img {
-    translate: 56px 0;
+.tarjetas-robots label:nth-of-type(2) img {
+  translate: 45px 0;
 }
 
-.tarjeta-de-mokepon p{
-    color: white;
-    font-size: 1.45em;
-    align-self: flex-start;
-    padding-left: 20px;
-
+.tarjetas-robots label:nth-of-type(3) img {
+  translate: 56px 0;
 }
 
-input{
-    display: none;
+.tarjeta-de-robot p {
+  color: white;
+  font-size: 1.45em;
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+input {
+  display: none;
 }
 
 #btn-mascota {
-    width: 150px;
-    height: 40px;
-    background-color: #F95738;
-    border: 2px solid #c75640;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-    margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  background-color: #f95738;
+  border: 2px solid #c75640;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
 }
 
 #btn-mascota:hover {
-    background-color: #d90429;
-    border: #e72f4e;
+  background-color: #d90429;
+  border: #e72f4e;
 }
 
 #seleccionar-ataque {
-    flex-direction: column;
-    align-items: center;
-
+  flex-direction: column;
+  align-items: center;
 }
 .ataques {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 15px;
 }
 .btn-ataque {
-    width: 90px;
-    height: 45px;
-    background-color: #F95738;
-    border: 2px solid #c75640;
-    color: white;
-    border-radius: 18px;
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-    font-size: 1em;
-    scale: 1;
-    transition: all 0.3s ease-in-out;
+  width: 90px;
+  height: 45px;
+  background-color: #f95738;
+  border: 2px solid #c75640;
+  color: white;
+  border-radius: 18px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  scale: 1;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn-ataque:hover {
-    background-color: #0D3B66;
-    box-shadow: #e72f4e 0px 0px 5px 2px;
-    transform: scale(1.03);
+  background-color: #0d3b66;
+  box-shadow: #e72f4e 0px 0px 5px 2px;
+  transform: scale(1.03);
 }
 
 .btn-ataque:disabled {
-    background-color: #7a776b;
-    cursor: not-allowed;
-    transition: none;
-    box-shadow: none;
-    border: none;
-    transform: none;   
+  background-color: #7a776b;
+  cursor: not-allowed;
+  transition: none;
+  box-shadow: none;
+  border: none;
+  transform: none;
 }
 
 #estatus-juego {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 350px;
 }
 
 #btn-reiniciar {
-    width: 90px;
-    height: 30px;
-    background-color: #d90429;
-    border: 2px solid #9e061f;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-    margin-top: 20px;
+  width: 90px;
+  height: 30px;
+  background-color: #d90429;
+  border: 2px solid #9e061f;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
 }
 #btn-reiniciar:hover {
-    background-color: #9e061f;
-    border: #b71d12;
-    box-shadow: #b71d12 0px 0px 5px 2px;
+  background-color: #9e061f;
+  border: #b71d12;
+  box-shadow: #b71d12 0px 0px 5px 2px;
 }
 
 #mensajes {
-    display: flex;
-    justify-content: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    text-align: center;
-    font-size: 1.5em;
-    color: #0D3B66;
-    background-color: #f4d35e;
-    width: 100%;
-    max-width: 350px;
-    height: 110px;
-    margin-top: 30px;
-    border-radius: 10px
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  text-align: center;
+  font-size: 1.5em;
+  color: #0d3b66;
+  background-color: #f4d35e;
+  width: 100%;
+  max-width: 350px;
+  height: 110px;
+  margin-top: 30px;
+  border-radius: 10px;
 }
 
 #mensajes p {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-.tarjetas-mokepon input:checked + #mensajes {
-    display: flex;
+.tarjetas-robots input:checked + #mensajes {
+  display: flex;
 }
 
 .log-ataques {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-    border-radius: 20px;
-    background-color: #f4d35e;
-    padding: 10px;
-    width: 100%;
-    max-width: 350px;
-
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  border-radius: 20px;
+  background-color: #f4d35e;
+  padding: 10px;
+  width: 100%;
+  max-width: 350px;
 }
 .log-ataques > div {
   text-align: center;
-  color: #0D3B66;
+  color: #0d3b66;
   font-size: 1.2em;
   font-style: bold;
 }
 
 /* Parte del Canvas */
 #ver-mapa {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 #mapa {
-    border-radius: 10px;
-    background-color: #0D3B66;
-} 
+  border-radius: 10px;
+  background-color: #0d3b66;
+}
 
 .mover-bottones {
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    gap: .25rem;
-    margin-top: 20px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  gap: 0.25rem;
+  margin-top: 20px;
 }
 
-#up{
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+#up {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 }
-#left{
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+#left {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
 }
-#down{
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
+#down {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
 }
-#right{
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
+#right {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
 }
-#up, #left, #down, #right {
-    width: 80px;
-    height: 40px;
-    background-color: #F95738;
-    border: 2px solid #c75640;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-}
-
-#up:hover, #left:hover, #down:hover, #right:hover {
-    background-color: #d90429;
-    border: #e72f4e;
+#up,
+#left,
+#down,
+#right {
+  width: 80px;
+  height: 40px;
+  background-color: #f95738;
+  border: 2px solid #c75640;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
-
+#up:hover,
+#left:hover,
+#down:hover,
+#right:hover {
+  background-color: #d90429;
+  border: #e72f4e;
+}
 
 @media (max-width: 800px) {
-    .tarjetas-mokepon {
-        flex-direction: column;
-        align-items: center;
-    }
-    .ataques {
-        flex-direction: column;
-        gap: 15px;
-    }
+  .tarjetas-robots {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ataques {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 @media (max-width: 300px) {
-    #ver-mapa {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+  #ver-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }

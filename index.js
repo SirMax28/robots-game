@@ -25,7 +25,7 @@ class Jugador {
   }
 }
 
-class Robot {
+class RobotCombate {
   constructor(nombre) {
     this.nombre = nombre;
   }
@@ -45,7 +45,7 @@ app.get('/unirse', (req, res) => {
 app.post('/robot/:jugadorId', (req, res) => {
   const jugadorId = req.params.jugadorId || '';
   const nombre = req.body.robot || '';
-  const robot = new Robot(nombre);
+  const robot = new RobotCombate(nombre);
   const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id);
 
   if (jugadorIndex >= 0) {
