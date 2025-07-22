@@ -176,9 +176,29 @@ function unirseAlJuego() {
                     console.log(respuesta);
                     jugadorId = respuesta;
                 });
+            } else if (res.status === 400) {
+                // Sala llena
+                return res.text().then(function(mensaje) {
+                    alert('🤖 Sala llena: ' + mensaje + '\n\n¡Intenta de nuevo en unos minutos!');
+                    // Deshabilitar la interfaz
+                    document.body.innerHTML = `
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column; font-family: Arial, sans-serif; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                                <h1 style="color: #333; margin-bottom: 20px;">🤖 Robots de Combate</h1>
+                                <h2 style="color: #e74c3c; margin-bottom: 20px;">Sala Llena</h2>
+                                <p style="color: #666; font-size: 18px; margin-bottom: 30px;">Ya hay 2 jugadores en combate.<br>¡Intenta de nuevo en unos minutos!</p>
+                                <button onclick="location.reload()" style="background: #3498db; color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 16px; cursor: pointer;">🔄 Intentar de Nuevo</button>
+                            </div>
+                        </div>
+                    `;
+                });
             } else {
                 throw new Error("Error al unirse al juego");
             }
+        })
+        .catch(function(error) {
+            console.error("Error de conexión:", error);
+            alert("❌ Error de conexión con el servidor. ¿Está el backend funcionando?");
         });
 }
 function seleccionarMascotaJugador() {

@@ -33,11 +33,19 @@ class RobotCombate {
 
 
 app.get('/unirse', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  
+  // Limitar a máximo 2 jugadores
+  if (jugadores.length >= 2) {
+    console.log('Sala llena. Se rechazó la conexión.');
+    res.status(400).send('Sala llena. Máximo 2 jugadores permitidos.');
+    return;
+  }
+  
   const id = `${Math.random().toString(36).substring(2, 15)}`;
   const jugador = new Jugador(id);
   jugadores.push(jugador);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  console.log(`Jugador con ID ${id} se ha unido.`);
+  console.log(`Jugador con ID ${id} se ha unido. Jugadores activos: ${jugadores.length}/2`);
   res.send(id);
 });
 
@@ -89,6 +97,24 @@ app.get('/robot/:jugadorId/ataques', (req, res) =>{
     { ataques: jugador.robot.ataques || [] 
     });
 });
+
+// Endpoint para obtener el estado de la sala
+app.get('/sala/estado', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.send({
+    jugadoresActivos: jugadores.length,
+    salaLlena: jugadores.length >= 2
+  });
+});
+
+// Endpoint para resetear la sala (opcional - para testing)
+app.post('/sala/reset', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  jugadores.length = 0; // Vaciar el array
+  console.log('Sala reseteada. Jugadores eliminados.');
+  res.send({ mensaje: 'Sala reseteada correctamente' });
+});
+
 app.listen(3000, '0.0.0.0', () => {
   console.log('Server is running on port 3000');
   console.log('Access from local network: http://[YOUR_IP]:3000');
