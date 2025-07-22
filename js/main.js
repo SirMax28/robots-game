@@ -232,6 +232,35 @@ function seleccionarRobot(mascotaJugador) {
             'robot': mascotaJugador
          })
          })
+         .then(function(res) {
+             if (res.ok) {
+                 console.log(`Robot ${mascotaJugador} seleccionado exitosamente`);
+                 // Hacer una sincronización inicial después de seleccionar robot
+                 setTimeout(sincronizacionInicial, 500);
+             }
+         })
+         .catch(function(error) {
+             console.error('Error al seleccionar robot:', error);
+         });
+}
+
+function sincronizacionInicial() {
+    fetch(`${BASE_URL}/jugadores/${jugadorId}`)
+        .then(function(res) {
+            if (res.ok) {
+                return res.json().then(function({ enemigos }) {
+                    console.log('Sincronización inicial - enemigos encontrados:', enemigos);
+                    if (enemigos.length > 0) {
+                        robotsEnemigos = enemigos.map(function (enemigo) {
+                            return crearRobotEnemigo(enemigo);
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function(error) {
+            console.error('Error en sincronización inicial:', error);
+        });
 }
 function seleccionarMascotaEnemigo(enemigo) {
     spanMascotaEnemigo.innerHTML = enemigo.nombre;
@@ -442,6 +471,26 @@ function pintarCanvas(){
     });
 }
 
+function crearRobotEnemigo(enemigo) {
+    let robotEnemigo = null;
+    const robotNombre = enemigo.robot.nombre || '';
+    
+    if( robotNombre === "Robot Alpha" ) {
+        robotEnemigo = new Robot("Robot Alpha", "./assets/robot_alpha.png","./assets/blue_robot_alpha.png", 5, "./assets/cabeza_alpha.png", enemigo.id);
+    } else if (robotNombre === "Robot Beta") {
+        robotEnemigo = new Robot("Robot Beta", "./assets/robot_beta.png","./assets/blue_robot_beta.png", 5, "./assets/cabeza_beta.png", enemigo.id);
+    } else if (robotNombre === "Robot Gamma") {
+        robotEnemigo = new Robot("Robot Gamma", "./assets/robot_gamma.png","./assets/blue_robot_gamma.png", 5, "./assets/cabeza_gamma.png", enemigo.id);
+    }
+    
+    if (robotEnemigo) {
+        robotEnemigo.x = enemigo.robot.x;
+        robotEnemigo.y = enemigo.robot.y;
+    }
+    
+    return robotEnemigo;
+}
+
 function enviarposicion(x, y) {
     fetch(`${BASE_URL}/robot/${jugadorId}/posicion`,
             { method: 'POST',
@@ -456,26 +505,18 @@ function enviarposicion(x, y) {
             .then(function(res) {
                 if (res.ok) {
                     res.json().then(function({ enemigos }) {
-                        console.log(enemigos);
-                        robotsEnemigos = enemigos.map(function (enemigo) {
-                            let robotEnemigo = null;
-                           const robotNombre = enemigo.robot.nombre || '';
-                           if( robotNombre ==="Robot Alpha" ) {
-                                //Enemigos
-                                robotEnemigo = new Robot("Robot Alpha", "./assets/robot_alpha.png","./assets/blue_robot_alpha.png", 5, "./assets/cabeza_alpha.png", enemigo.id);
-                           }else if (robotNombre ==="Robot Beta") {
-                                robotEnemigo = new Robot("Robot Beta", "./assets/robot_beta.png","./assets/blue_robot_beta.png", 5, "./assets/cabeza_beta.png", enemigo.id);
-                           }else if (robotNombre ==="Robot Gamma") {
-                                robotEnemigo = new Robot("Robot Gamma", "./assets/robot_gamma.png","./assets/blue_robot_gamma.png", 5, "./assets/cabeza_gamma.png", enemigo.id);
-                           }
-                           
-                           robotEnemigo.x = enemigo.robot.x;
-                           robotEnemigo.y = enemigo.robot.y;
-                           return robotEnemigo;
-                        });
+                        if (enemigos && enemigos.length > 0) {
+                            robotsEnemigos = enemigos.map(crearRobotEnemigo).filter(robot => robot !== null);
+                        } else {
+                            // Si no hay enemigos, mantener la lista actual
+                            robotsEnemigos = robotsEnemigos || [];
+                        }
                     });
                 }
             })
+            .catch(function(error) {
+                console.error('Error al enviar posición:', error);
+            });
 }
 
 function moverDerecha() {

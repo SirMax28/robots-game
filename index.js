@@ -58,9 +58,15 @@ app.post('/robot/:jugadorId', (req, res) => {
 
   if (jugadorIndex >= 0) {
     jugadores[jugadorIndex].asignarRobot(robot);
+    
+    // Inicializar posición del robot si no está definida
+    if (!jugadores[jugadorIndex].robot.x) {
+      jugadores[jugadorIndex].robot.x = Math.floor(Math.random() * 500);
+      jugadores[jugadorIndex].robot.y = Math.floor(Math.random() * 350);
+    }
   }
-  console.log(jugadores);
-  console.log(`Jugador con ID ${jugadorId} ha enviado un robot. ${robot.nombre}`);
+  console.log(`Jugador con ID ${jugadorId} ha enviado un robot: ${robot.nombre}`);
+  console.log(`Total jugadores con robots: ${jugadores.filter(j => j.robot).length}`);
   res.end();
 })
 
@@ -69,11 +75,19 @@ app.post('/robot/:jugadorId/posicion', (req, res) => {
   const x = req.body.x || 0;
   const y = req.body.y || 0;
   const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id);
+  
   if(jugadorIndex >= 0) {
     jugadores[jugadorIndex].actualizarPosicion(x, y);
   }
-  // Enviar la posición actualizada a todos los jugadores
-  const enemigos = jugadores.filter((jugador) => jugador.id !== jugadorId);
+  
+  // Enviar solo enemigos que tengan robot asignado y posición válida
+  const enemigos = jugadores.filter((jugador) => 
+    jugador.id !== jugadorId && 
+    jugador.robot && 
+    jugador.robot.nombre && 
+    typeof jugador.robot.x === 'number' && 
+    typeof jugador.robot.y === 'number'
+  );
 
   res.send({ enemigos });
 })
@@ -101,10 +115,29 @@ app.get('/robot/:jugadorId/ataques', (req, res) =>{
 // Endpoint para obtener el estado de la sala
 app.get('/sala/estado', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
+  const jugadoresConRobot = jugadores.filter(j => j.robot && j.robot.nombre);
   res.send({
     jugadoresActivos: jugadores.length,
-    salaLlena: jugadores.length >= 2
+    jugadoresConRobot: jugadoresConRobot.length,
+    salaLlena: jugadores.length >= 2,
+    juegoListo: jugadoresConRobot.length >= 2
   });
+});
+
+// Endpoint para obtener todos los jugadores (para sincronización inicial)
+app.get('/jugadores/:jugadorId', (req, res) => {
+  const jugadorId = req.params.jugadorId || '';
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  
+  const enemigos = jugadores.filter((jugador) => 
+    jugador.id !== jugadorId && 
+    jugador.robot && 
+    jugador.robot.nombre && 
+    typeof jugador.robot.x === 'number' && 
+    typeof jugador.robot.y === 'number'
+  );
+  
+  res.send({ enemigos });
 });
 
 // Endpoint para resetear la sala (opcional - para testing)
