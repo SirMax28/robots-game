@@ -212,6 +212,17 @@ function seleccionarMascotaJugador() {
         alert("Selecciona un robot");
         return;
     }
+    
+    // Limpiar arrays de ataques de partidas anteriores
+    ataqueJugador = [];
+    ataqueEnemigo = [];
+    victoriasJugador = 0;
+    victoriasEnemigo = 0;
+    
+    // Limpiar contenedores de ataques visuales
+    ataqueDeJugador.innerHTML = '';
+    ataqueDeEnemigo.innerHTML = '';
+    
     sectionSeleccionarMascota.style.display='none';
     sectionReiniciar.style.display = "block";
     seleccionarRobot(mascotaJugador); 
@@ -275,6 +286,9 @@ function extraerAtaques() {
 }
 
 function mostrarAtaques(ataques){
+    // Limpiar contenedor antes de agregar nuevos ataques
+    contenedorAtaques.innerHTML = '';
+    
     ataques.forEach(ataque => {
         ataquesRobot = `
             <button id="${ataque.id}" class="btn-ataque BAtaque">${ataque.nombre}</button>
@@ -360,23 +374,28 @@ function indexAmbosOponentes(jugador, enemigo) {
 
 function combate() {
     clearInterval(intervalo);
+    
+    // Limpiar los contenedores de ataques al inicio del combate
+    ataqueDeJugador.innerHTML = '';
+    ataqueDeEnemigo.innerHTML = '';
+    
     for (let i = 0; i < ataqueJugador.length; i++) {
         if (ataqueJugador[i] === ataqueEnemigo[i]) {
             // Pasar los índices directamente
             indexAmbosOponentes(i, i);
-            crearMensaje("🤝EMPATE🤝");
+            crearMensaje("🤝EMPATE🤝", i);
         } else if (
             (ataqueJugador[i] === "Laser" && ataqueEnemigo[i] === "Escudo") ||
             (ataqueJugador[i] === "Misiles" && ataqueEnemigo[i] === "Laser") ||
             (ataqueJugador[i] === "Escudo" && ataqueEnemigo[i] === "Misiles")
         ) {
             indexAmbosOponentes(i, i);
-            crearMensaje("🎊GANASTE🎊");
+            crearMensaje("🎊GANASTE🎊", i);
             victoriasJugador++;
             spanVidasJugador.innerHTML = victoriasJugador;
         } else {
             indexAmbosOponentes(i, i);
-            crearMensaje("💔PERDISTE💔");
+            crearMensaje("💔PERDISTE💔", i);
             victoriasEnemigo++;
             spanVidasEnemigo.innerHTML = victoriasEnemigo;
         }
@@ -409,23 +428,28 @@ function reiniciarJuego() {
     location.reload();
 }
 
-function crearMensaje(resultado) {
+function crearMensaje(resultado, indiceAtaque) {
     const contenedorAtaques = document.querySelector('.ataques')
     const divMensaje = document.getElementById("mensajes")
-    contenedorAtaques.addEventListener("click", (event) => {
-        if (event.target.matches('button')) {
-            divMensaje.style.visibility = "visible"
-            divMensaje.style.opacity = "1"
-        }
-    })
+    
+    // Solo agregar el event listener una vez
+    if (!contenedorAtaques.hasAttribute('data-listener-added')) {
+        contenedorAtaques.addEventListener("click", (event) => {
+            if (event.target.matches('button')) {
+                divMensaje.style.visibility = "visible"
+                divMensaje.style.opacity = "1"
+            }
+        });
+        contenedorAtaques.setAttribute('data-listener-added', 'true');
+    }
 
     let parrafoAtaqueJugador = document.createElement("p");
     let parrafoAtaqueEnemigo = document.createElement("p");
     
     sectionMensajes.innerHTML = resultado;
-    // Mostrar los ataques en lugar de los índices
-    parrafoAtaqueJugador.innerHTML = ataqueJugador[indexJugador];
-    parrafoAtaqueEnemigo.innerHTML = ataqueEnemigo[indexEnemigo];
+    // Mostrar los ataques usando el índice específico
+    parrafoAtaqueJugador.innerHTML = ataqueJugador[indiceAtaque];
+    parrafoAtaqueEnemigo.innerHTML = ataqueEnemigo[indiceAtaque];
 
     ataqueDeJugador.appendChild(parrafoAtaqueJugador);
     ataqueDeEnemigo.appendChild(parrafoAtaqueEnemigo);
