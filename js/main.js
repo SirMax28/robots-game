@@ -27,8 +27,14 @@ const contenedorAtaques = document.getElementById("contenedor-ataques");
 //Parte del Canvas
 const sectionVerMapa = document.getElementById("ver-mapa");
 const mapa = document.getElementById("mapa");
-mapa.width  = mapa.clientWidth;
-mapa.height = mapa.clientHeight;
+
+// Tamaño fijo del canvas para consistencia entre dispositivos
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 400;
+
+// Establecer tamaño fijo del canvas
+mapa.width = CANVAS_WIDTH;
+mapa.height = CANVAS_HEIGHT;
 
 let jugadorId = null;
 let enemigoId = null;
@@ -60,18 +66,8 @@ let lienzo = mapa.getContext("2d");
 let intervalo;
 let mapaBackground = new Image();
 mapaBackground.src = "./assets/robotsMap.png";
-let alturaBuscada;
-let anchoDelMapa = window.innerWidth -20 -20;
-const anchoMaximoDelMapa = 600;
 
-
-// Ajustar el ancho del mapa al ancho máximo permitido
-if (anchoDelMapa > anchoMaximoDelMapa) {
-    anchoDelMapa = anchoMaximoDelMapa
-}
-alturaBuscada = (anchoDelMapa * 400) / 600;
-mapa.width = anchoDelMapa;
-mapa.height = alturaBuscada;
+// Ya no necesitamos cálculo dinámico del tamaño - usar tamaño fijo
 
 class Robot {
     constructor(nombre, foto,foto_dark,vida,fotoMapa, id = null) {
@@ -83,8 +79,8 @@ class Robot {
         this.ataques = [];
         this.ancho = 50;
         this.alto = 50;
-        this.x = aleatorio(0, mapa.width - this.ancho);
-        this.y = aleatorio(0, mapa.height - this.alto);
+        this.x = aleatorio(0, CANVAS_WIDTH - this.ancho);
+        this.y = aleatorio(0, CANVAS_HEIGHT - this.alto);
         this.mapaFoto = new Image();
         this.mapaFoto.src = fotoMapa;
         this.velocidadX = 0;
@@ -451,13 +447,13 @@ function extraerMascota() {
 function pintarCanvas(){
     mascotaJugadorObjeto.x += mascotaJugadorObjeto.velocidadX;
     mascotaJugadorObjeto.y += mascotaJugadorObjeto.velocidadY;
-    lienzo.clearRect(0, 0, mapa.width, mapa.height);
+    lienzo.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     // Dibuja el fondo del mapa
     lienzo.drawImage(mapaBackground, 
         0, 
         0, 
-        mapa.width, 
-        mapa.height
+        CANVAS_WIDTH, 
+        CANVAS_HEIGHT
     );
     // Dibuja el personaje
     mascotaJugadorObjeto.pintarRobot();

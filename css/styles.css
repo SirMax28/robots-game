@@ -228,6 +228,10 @@ input {
 #mapa {
   border-radius: 10px;
   background-color: #0d3b66;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .mover-bottones {
@@ -291,6 +295,25 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+  
+  #mapa {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+  }
+}
+
+/* Media query adicional para canvas responsivo */
+@media (max-width: 600px) {
+  #mapa {
+    width: 100%;
+    max-width: 350px;
+    height: 233px; /* Mantiene la proporción 3:2 */
+  }
+  
+  .mover-bottones {
+    gap: 0.5rem;
+    margin-top: 15px;
   }
 }
