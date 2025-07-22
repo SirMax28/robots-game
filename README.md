@@ -2,7 +2,7 @@
 
 Un emocionante juego de combate por turnos con robots, donde los jugadores se enfrentan en tiempo real en un mapa interactivo.
 
-## 🎮 [¡JUGAR AHORA!](https://sirmax.github.io/robots-game)
+## 🎮 [¡JUGAR AHORA!](https://sirmax28.github.io/robots-game)
 
 ## 🎯 Características
 
