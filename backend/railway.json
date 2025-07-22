@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "build": {
+    "commands": ["npm install"]
+  },
+  "deploy": {
+    "startCommand": "node index.js"
+  }
+}
