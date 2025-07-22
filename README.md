@@ -2,7 +2,7 @@
 
 Un emocionante juego de combate por turnos con robots, donde los jugadores se enfrentan en tiempo real en un mapa interactivo.
 
-## 🎮 [¡JUGAR AHORA!](https://sirmax.github.io/ping-pong-game/)
+## 🎮 [¡JUGAR AHORA!](https://sirmax.github.io/robots-game)
 
 ## 🎯 Características
 
@@ -24,18 +24,20 @@ Un emocionante juego de combate por turnos con robots, donde los jugadores se en
 ## ⚔️ Sistema de Combate
 
 - **⚡ Láser** vence a **🛡️ Escudo**
-- **🚀 Misiles** vencen a **⚡ Láser**  
+- **🚀 Misiles** vencen a **⚡ Láser**
 - **🛡️ Escudo** vence a **🚀 Misiles**
 
 ## 🛠️ Tecnologías Utilizadas
 
 ### Frontend
+
 - **HTML5** - Estructura del juego
 - **CSS3** - Estilos y animaciones
 - **JavaScript ES6** - Lógica del juego
 - **Canvas API** - Renderizado del mapa
 
 ### Backend
+
 - **Node.js** - Servidor
 - **Express.js** - API REST
 - **CORS** - Comunicación cross-origin
@@ -66,10 +68,12 @@ ping-pong-game/
 ## 🎮 Controles
 
 ### Mapa
+
 - **Flechas** o **WASD**: Mover robot
 - **Mouse/Touch**: Botones de movimiento en móvil
 
 ### Combate
+
 - **Click**: Seleccionar ataques
 - **Estrategia**: Piensa bien tu secuencia de 5 ataques
 
@@ -100,31 +104,19 @@ npm start
 ### Servidor de Desarrollo
 
 El backend incluye:
+
 - Sistema de jugadores dinámico
 - API de posicionamiento en tiempo real
 - Sistema de combate por turnos
 - Gestión de estado de la partida
 
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si tienes ideas para mejoras:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## 📧 Contacto
 
-Tu Nombre - [@tutwitter](https://twitter.com/tutwitter) - tu@email.com
+Samuel Steven - [@SamuelSteven28](https://x.com/samuelSteven28) 
 
-Link del Proyecto: [https://github.com/tuusuario/ping-pong-game](https://github.com/tuusuario/ping-pong-game)
+Link del Proyecto: [https://github.com/sirmax28/robots-game](https://github.com/sirmax28/robots-game)
 
 ---
 
-⭐ ¡No olvides darle una estrella al proyecto si te gustó!
+⭐ Estoy aprendiendo y esto es un proyecto de prueba, hay muchas cosas por aprender y mejorar aún.

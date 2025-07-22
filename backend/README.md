@@ -5,6 +5,7 @@ Servidor Node.js para el juego multijugador de Robots de Combate.
 ## 🌐 API Endpoints
 
 ### Jugadores
+
 - `GET /unirse` - Unirse al juego (devuelve ID único)
 - `POST /robot/:jugadorId` - Asignar robot al jugador
 - `POST /robot/:jugadorId/posicion` - Actualizar posición del robot
@@ -30,6 +31,7 @@ Servidor Node.js para el juego multijugador de Robots de Combate.
 ## 📊 Estado del Servidor
 
 El servidor mantiene en memoria:
+
 - Lista de jugadores conectados
 - Posiciones de robots en el mapa
 - Estado de combates activos
